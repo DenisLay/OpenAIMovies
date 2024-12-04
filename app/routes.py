@@ -6,9 +6,9 @@ from .openai_service import OpenAIService
 api_blueprint = Blueprint('api', __name__)
 chatGpt = OpenAIService()
 
-@api_blueprint.route('/', methods=['GET'])
-def main():
-    return jsonify({"result": "ok"}), 200
+@api_blueprint.route('/')
+def home():
+    return 'Hello, World!'
 
 @api_blueprint.route('/users', methods=['POST'])
 def add_user():
