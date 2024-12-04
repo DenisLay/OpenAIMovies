@@ -38,18 +38,14 @@ def get_user(id):
     #return user_schema.jsonify(user)
     return jsonify({"result": "ok"}), 200
 
-@api_blueprint.route('/prompt', methods=['GET'])
+@api_blueprint.route('/prompt', methods=['POST'])
 def openai_get():
-    #data = request.get_json()
-    #prompt = data.get("content")
+    data = request.get_json()
+    prompt = data.get("content")
 
-    #if not prompt:
-    #    return jsonify({"error": "Prompt is required"}), 400
+    if not prompt:
+        return jsonify({"error": "Prompt is required"}), 400
     
-    #response = chatGpt.get_response(prompt)
-
-    response = chatGpt.get_response("зроби вибірку аніме про виживання, додай оцінку, опис, рік, режисера, українською мовою. результат пошуку запакуй в масив json")
-
-    print(response)
+    response = chatGpt.get_response(prompt)
 
     return response.choices[0].message.content

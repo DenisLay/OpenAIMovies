@@ -1,9 +1,10 @@
+import os
 from openai import OpenAI
-from .config import Config
+#from .config import Config
 
 class OpenAIService:
     def __init__(self):
-        self.client = OpenAI(api_key=Config.SECRET_KEY)
+        self.client = OpenAI(api_key=os.getenv("SECRET_KEY"))
 
     def get_response(self, message):
         try:
