@@ -8,6 +8,9 @@ class OpenAIService:
 
     def get_response(self, message):
         try:
+            message_end = "\nтвоя відповідь має бути результатами пошуку, збери у json. схема об'єкту має бути наступною - назва (оригінал + переклад) (title), рік виходу (year), оцінки imdb (rate), режисер (director), головні актори (actors), опис (description). якщо ти нічого не знайдеш, поверни пустий масив."
+            message = message + message_end
+
             response = self.client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
