@@ -9,7 +9,7 @@ class OpenAIService:
     def get_response(self, message):
         try:
             response = self.client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[
                 {
                     "role": "user",
